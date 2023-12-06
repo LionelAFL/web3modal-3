@@ -1,0 +1,10 @@
+dist
+node_modules
+.DS_Store
+.env
+.next
+out
+lerna-debug.log
+.env.local
+.env
+.turbo

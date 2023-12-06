@@ -1,0 +1,53 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "watch": {
+      "dependsOn": ["^watch"],
+      "cache": false
+    },
+    "build:gallery": {
+      "dependsOn": ["build", "^build:gallery"],
+      "outputs": ["out/**"]
+    },
+    "build:laboratory": {
+      "dependsOn": ["build", "^build:laboratory"],
+      "outputs": ["out/**", ".next/**", "!.next/cache/**"]
+    },
+    "build:examples": {
+      "dependsOn": ["build", "^build:examples"],
+      "outputs": ["dist/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "cache": false
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "cache": false
+    },
+    "prettier": {
+      "dependsOn": ["^prettier"],
+      "cache": false
+    },
+    "dev:laboratory": {
+      "dependsOn": ["watch", "^dev:laboratory"],
+      "cache": false
+    },
+    "dev:gallery": {
+      "dependsOn": ["watch", "^dev:gallery"],
+      "cache": false
+    },
+    "dev:example": {
+      "dependsOn": ["watch", "^dev:example"],
+      "cache": false
+    }
+  }
+}
